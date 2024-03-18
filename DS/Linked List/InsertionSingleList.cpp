@@ -103,11 +103,11 @@ int main()
     Node* head = node1;
     Node* tail= node1;
     print(head);
-    //cout<<head->data<<endl;
-    //cout<<head->next<<endl;
+    cout<<head->data<<endl;
+    cout<<head->next<<endl;
     InsertAtHead(head,12);
     InsertAtTail(tail,15);
-    InsertAtMiddle(head,tail,4,20);
+    InsertAtMiddle(head,tail,5,20);
     InsertAtTail(tail,40);
     print(head);
     DeleteNode(3,head,tail);
