@@ -46,6 +46,11 @@ void insertnode(node* &tail,int element,int d)
 }
 void printlist(node* &tail)
 {
+    if(tail==NULL)
+    {
+        cout<<"List is empty"<<endl;
+        return;
+    }
     node* temp=tail;//to save address of print start point
     do{
         cout<<tail->data<<" ";

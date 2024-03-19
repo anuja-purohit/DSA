@@ -13,25 +13,45 @@ class Node
         this->next=NULL;
     }
 };
-void InsertAtHead(Node* &head, int d)
+void InsertAtHead(Node* &head,Node* tail, int d)
 {
-    //create new node
-    Node* temp= new Node(d);
-    temp->next=head; //connect the nodes
-    head=temp; //reset head pointer
+    if(head==NULL)
+    {
+        Node* temp= new Node(d);
+        head=temp;
+        tail=temp;
+    }
+    else
+    {
+        //create new node
+        Node* temp= new Node(d);
+        temp->next=head; //connect the nodes
+        head=temp; //reset head pointer
+    }
+    
 }
-void InsertAtTail(Node* &tail, int d)
+void InsertAtTail(Node* &head,Node* &tail, int d)
 {
-    Node* temp= new Node(d);
-    tail->next =temp;
-    tail=tail->next; //tail=temp
+    if(tail==NULL)
+    {
+        Node* temp=new Node(d);
+        tail=temp;
+        head=temp;
+    }
+    else{
+        Node* temp= new Node(d);
+        tail->next =temp;
+        tail=tail->next; //tail=temp
+
+    }
+    
 }
 void InsertAtMiddle(Node* &head, Node* &tail, int position,int d)
 {
     //for first position
     if(position==1)
     {
-        InsertAtHead(head,d);
+        InsertAtHead(head,tail,d);
         return;
     }
     Node* temp= head;
@@ -45,7 +65,7 @@ void InsertAtMiddle(Node* &head, Node* &tail, int position,int d)
     //for last position
     if(temp->next==NULL)
     {
-        InsertAtTail(tail,d);
+        InsertAtTail(head,tail,d);
         return;
     }
     //creating a node
@@ -105,10 +125,10 @@ int main()
     print(head);
     cout<<head->data<<endl;
     cout<<head->next<<endl;
-    InsertAtHead(head,12);
-    InsertAtTail(tail,15);
+    InsertAtHead(head,tail,12);
+    InsertAtTail(head,tail,15);
     InsertAtMiddle(head,tail,5,20);
-    InsertAtTail(tail,40);
+    InsertAtTail(head,tail,40);
     print(head);
     DeleteNode(3,head,tail);
     print(head);
